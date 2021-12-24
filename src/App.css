@@ -33,6 +33,7 @@ body {
   border-radius: 5px;
   width: 300px;
   background-color: black;
+  color: white
 }
 .tasks__send {
   margin: 20px 0 0 20px;
@@ -55,7 +56,12 @@ body {
 .task__text {
   font-size: 1.2 rem;
   margin: 5px auto 5px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
 }
+
 .task__btn {
   background-color: white;
   background-size: 22px 22px;
@@ -79,4 +85,8 @@ body {
 .task__btn_completed {
   margin-right: 10px;
   background-image: url('./image/check-lg.svg')
+}
+
+.check {
+  text-decoration: line-through;
 }
