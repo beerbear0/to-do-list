@@ -1,38 +1,64 @@
-.App {
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: black;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid white ;
+  padding: 15px 0;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header__title {
+  font-size: 2.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.task__btn {
+  color: white; 
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: black;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.tasks__div {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 360px;
+}
+.tasks__input {
+  margin-top: 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 300px;
+  background-color: black;
+}
+.tasks__send {
+  margin: 20px 0 0 20px
 }
 
-.App-link {
-  color: #61dafb;
+.task {
+  display: flex;
+  border: 1px solid white;
+  width: 300px;
+  margin-top: 20px;
+} 
+
+.task__text {
+  font-size: 1.2 rem;
+  margin: 5px auto 5px 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task__btn_edit {
+  margin-right: 10px;
+  background-image: url('./image/pencil.svg');
 }
