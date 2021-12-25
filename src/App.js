@@ -3,33 +3,27 @@ import './App.css';
 import Task from './Components/card/Task';
 import ToDoForm from './Components/ToDoForm/ToDoForm';
 function App() {
+    const [todos, setTodos] = useState([])
 
-  const [value, setValue] = useState('');
-  const [check, setCheck] = useState(false);
-  const [cards, setCards] = useState([]);
+    function addTask (userInput) {
+        if(userInput) {
+            const newItem = {
+                id: Math.random().toString(36).substr(2,9),
+                task: userInput,
+                completed: false
+            }
+            setTodos([...todos, newItem])
+        }
+        console.log(todos)
+    }
+    function removeTask () {
 
-  const activeTask = cards.filter(task => task.complete === false);
-  const completedTask = cards.filter(task => task.complete === true);
+    }
 
+    function handleToggle() {
 
-  function changeInput(value) {
-
-  }
-  function sendBtn (evt) {
-    // evt.preventDefault();
-    let list = cards;
-    list.push({
-      id: Math.random().toString(36).substr(2, 9),
-      description: value,
-      complete: false,
-    },)
-    setCards(list)
-    console.log(cards.length)
-
-  }
-
-
-  // const finalTasks =
+    }
+    function editTask () {}
   return (
     <div>
       <section className='header'>
@@ -38,19 +32,18 @@ function App() {
       <section className='content'>
         <div className='tasks'>
           <ToDoForm
-            value={value}
-            setValue={setValue}
-            sendBtn={sendBtn}
-            change={changeInput}
+              addTask={addTask}
           />
-         {cards.map(item => {
-           return(
-               <Task key={item.id}
-                     check={check}
-                     taskText={item.description}
-                     complete={item.complete}
-               />
-           )
+         {todos.map(todo => {
+             return(
+                 <Task
+                     key={todo.id}
+                     todo={todo}
+                     toggleTask={handleToggle}
+                     removeTask={removeTask}
+                     editTask={editTask}
+                 />
+             )
          })}
         </div>
       </section>
