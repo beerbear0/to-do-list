@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
-function ToDoForm ({ addTask }) {
-    const [userInput, setUserInput] = useState('')
+function ToDoForm ({ addTask, userInput, setUserInput }) {
+
     function handleSubmit (e) {
         e.preventDefault();
         addTask(userInput);

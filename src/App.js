@@ -4,6 +4,8 @@ import Task from './Components/card/Task';
 import ToDoForm from './Components/ToDoForm/ToDoForm';
 function App() {
     const [todos, setTodos] = useState([])
+    const [userInput, setUserInput] = useState('');
+    const [task, setTask] = useState('');
 
     function addTask (userInput) {
         if(userInput) {
@@ -17,7 +19,7 @@ function App() {
         console.log(todos)
     }
     function removeTask (id) {
-        setTodos([...todos.filter((todo) => todo.id != id)])
+        setTodos([...todos.filter((todo) => todo.id !== id)])
     }
 
     function handleToggle(id) {
@@ -27,7 +29,6 @@ function App() {
             )
         ])
     }
-    function editTask () {}
   return (
     <div>
       <section className='header'>
@@ -37,6 +38,8 @@ function App() {
         <div className='tasks'>
           <ToDoForm
               addTask={addTask}
+              userInput={userInput}
+              setUserInput={setUserInput}
           />
          {todos.map(todo => {
              return(
@@ -45,7 +48,6 @@ function App() {
                      todo={todo}
                      toggleTask={handleToggle}
                      removeTask={removeTask}
-                     editTask={editTask}
                  />
              )
          })}
