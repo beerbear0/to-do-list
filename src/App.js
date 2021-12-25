@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import './App.css';
 import Task from './Components/card/Task';
 import ToDoForm from './Components/ToDoForm/ToDoForm';
-
 function App() {
 
   const [value, setValue] = useState('');
@@ -12,13 +11,19 @@ function App() {
   const activeTask = cards.filter(task => task.complete === false);
   const completedTask = cards.filter(task => task.complete === true);
 
+
+  function changeInput(value) {
+
+  }
   function sendBtn (evt) {
     // evt.preventDefault();
-    cards.push({
+    let list = cards;
+    list.push({
       id: Math.random().toString(36).substr(2, 9),
       description: value,
       complete: false,
     },)
+    setCards(list)
     console.log(cards.length)
 
   }
@@ -32,10 +37,11 @@ function App() {
       </section>
       <section className='content'>
         <div className='tasks'>
-          <ToDoForm 
+          <ToDoForm
             value={value}
             setValue={setValue}
             sendBtn={sendBtn}
+            change={changeInput}
           />
          {cards.map(item => {
            return(

@@ -3,7 +3,7 @@ import React from "react";
 function ToDoForm ({value, setValue, sendBtn}) {
     
     function onChange (e) {
-        setValue(e.target.value)  
+        setValue(e.target.value)
      }
      
     return (
@@ -11,10 +11,10 @@ function ToDoForm ({value, setValue, sendBtn}) {
             <input 
               className='tasks__input' 
               placeholder='Введите текст' 
-              value={value} 
+              value={value}
               onChange={onChange}
               />
-            <button type='submit' className='tasks__send' onClick={sendBtn} >Send</button>
+            <button type='submit' className='tasks__send' onClick={() => sendBtn()} >Send</button>
           </div>
     )
 }
