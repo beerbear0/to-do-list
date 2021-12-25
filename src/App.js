@@ -16,12 +16,16 @@ function App() {
         }
         console.log(todos)
     }
-    function removeTask () {
-
+    function removeTask (id) {
+        setTodos([...todos.filter((todo) => todo.id != id)])
     }
 
-    function handleToggle() {
-
+    function handleToggle(id) {
+        setTodos([
+            ...todos.map((todo) =>
+                todo.id === id ? { ...todo, complete: !todo.complete } : {...todo }
+            )
+        ])
     }
     function editTask () {}
   return (
