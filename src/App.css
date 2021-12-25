@@ -26,17 +26,19 @@ body {
   display: flex;
   justify-content: center;
   width: 360px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-top: 20px;
+  height: 40px;
 }
 .tasks__input {
-  margin-top: 20px;
-  border: 2px solid white;
-  border-radius: 5px;
-  width: 300px;
+  width: 320px;
   background-color: black;
-  color: white
+  color: white;
+  border: none;
 }
 .tasks__send {
-  margin: 20px 0 0 20px;
+  margin: 0 0 0 0;
   color: white; 
   border: 1px solid white;
   border-radius: 5px;
@@ -49,7 +51,7 @@ body {
 .task {
   display: flex;
   border: 1px solid white;
-  width: 300px;
+  width: 360px;
   margin-top: 20px;
 } 
 

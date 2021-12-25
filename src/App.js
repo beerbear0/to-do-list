@@ -1,46 +1,30 @@
 import React, { useState } from 'react';
 import './App.css';
+import Task from './Components/card/Task';
+import ToDoForm from './Components/ToDoForm/ToDoForm';
 
 function App() {
 
   const [value, setValue] = useState('');
-  const [taskText, setTaskText] = useState('');
-  const [check, setCheck] = useState();
-  const [card, setCard] = useState([]);
-  
-  let count = 0;
-  
-  function onChange (e) {
-     setValue(e.target.value)  
-  }
+  const [check, setCheck] = useState(false);
+  const [cards, setCards] = useState([]);
+
+  const activeTask = cards.filter(task => task.complete === false);
+  const completedTask = cards.filter(task => task.complete === true);
 
   function sendBtn (evt) {
-    evt.preventDefault();
-    setTaskText(value);
-    setCard(card)
+    // evt.preventDefault();
+    cards.push({
+      id: Math.random().toString(36).substr(2, 9),
+      description: value,
+      complete: false,
+    },)
+    console.log(cards.length)
+
   }
 
-  function editBtn (evt) {
-    evt.preventDefault();
-    setValue(taskText);
-  }
-  function toggleCheckBtn (evt) {
-    evt.preventDefault();
-    setCheck(!check);
-  }
 
-  function addTask () {
-    return (
-      <>
-        <div className='task'>
-          <p className={`task__text ${check ? 'check' : ''}`}>{taskText}</p>
-          <button type='button' className='task__btn task__btn_edit' onClick={editBtn}/>
-          <button type='button' className='task__btn task__btn_completed' onClick={toggleCheckBtn}/>
-          <button type='reset' className='task__btn tast__btn_delete' />
-        </div>
-      </>
-    )
-  }
+  // const finalTasks =
   return (
     <div>
       <section className='header'>
@@ -48,30 +32,20 @@ function App() {
       </section>
       <section className='content'>
         <div className='tasks'>
-          <div className='tasks__div' >
-            <input 
-              className='tasks__input' 
-              placeholder='Введите текст' 
-              value={value} 
-              onChange={onChange}
-              />
-            <button type='submit' className='tasks__send' onClick={sendBtn} >Send</button>
-          </div>
-          {card ?  <div key={count++} id={count++}>
-            <div className='task'>
-              <p className={`task__text ${check ? 'check' : ''}`}>{taskText}</p>
-              <button type='button' className='task__btn task__btn_edit' onClick={editBtn}/>
-              <button type='button' className='task__btn task__btn_completed' onClick={toggleCheckBtn}/>
-              <button type='reset' className='task__btn tast__btn_delete' />
-            </div>
-          </div> : ''
-          }
-          {/* <div className='task'>
-            <p className={`task__text ${check ? 'check' : ''}`}>{taskText}</p>
-            <button type='button' className='task__btn task__btn_edit' onClick={editBtn}/>
-            <button type='button' className='task__btn task__btn_completed' onClick={toggleCheckBtn}/>
-            <button type='reset' className='task__btn tast__btn_delete' />
-          </div> */}
+          <ToDoForm 
+            value={value}
+            setValue={setValue}
+            sendBtn={sendBtn}
+          />
+         {cards.map(item => {
+           return(
+               <Task key={item.id}
+                     check={check}
+                     taskText={item.description}
+                     complete={item.complete}
+               />
+           )
+         })}
         </div>
       </section>
     </div>
